@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serve Smart - Real-Time Table Order & Billing System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>🍽️ Serve Smart</h1>
+                <p>Real-Time Table Order & Billing System</p>
+            </div>
+            <div class="header-info">
+                <span id="current-time"></span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <!-- Left Panel: Menu -->
+                <section class="menu-section">
+                    <h2>Menu</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-category="all">All</button>
+                        <button class="filter-btn" data-category="appetizers">Appetizers</button>
+                        <button class="filter-btn" data-category="mains">Mains</button>
+                        <button class="filter-btn" data-category="desserts">Desserts</button>
+                        <button class="filter-btn" data-category="beverages">Beverages</button>
+                    </div>
+                    <div class="menu-items" id="menu-items">
+                        <!-- Menu items will be loaded here by JavaScript -->
+                        <div class="loading">Loading menu...</div>
+                    </div>
+                </section>
+
+                <!-- Right Panel: Order Summary & Billing -->
+                <section class="order-section">
+                    <div class="order-card">
+                        <h2>Table Order</h2>
+                        
+                        <div class="table-selector">
+                            <label for="table-number">Select Table:</label>
+                            <select id="table-number">
+                                <option value="">-- Choose Table --</option>
+                                <option value="1">Table 1</option>
+                                <option value="2">Table 2</option>
+                                <option value="3">Table 3</option>
+                                <option value="4">Table 4</option>
+                                <option value="5">Table 5</option>
+                                <option value="6">Table 6</option>
+                                <option value="7">Table 7</option>
+                                <option value="8">Table 8</option>
+                                <option value="9">Table 9</option>
+                                <option value="10">Table 10</option>
+                            </select>
+                        </div>
+
+                        <div class="order-items-container">
+                            <h3>Order Items</h3>
+                            <div class="order-items" id="order-items">
+                                <p class="empty-message">No items added yet</p>
+                            </div>
+                        </div>
+
+                        <!-- Bill Summary -->
+                        <div class="bill-summary">
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span id="subtotal">₹0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Tax (5%):</span>
+                                <span id="tax">₹0.00</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total:</span>
+                                <span id="total">₹0.00</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" id="place-order-btn">Place Order</button>
+                            <button class="btn btn-secondary" id="clear-order-btn">Clear Order</button>
+                        </div>
+                    </div>
+
+                    <!-- Order Status -->
+                    <div class="order-status-card">
+                        <h2>Order Status</h2>
+                        <div class="status-items" id="order-status">
+                            <p class="empty-message">No orders placed</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Modal for Order Confirmation -->
+        <div class="modal" id="order-modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Order Confirmation</h2>
+                <div class="modal-body">
+                    <p>Table Number: <strong id="modal-table"></strong></p>
+                    <div class="modal-items" id="modal-items"></div>
+                    <div class="modal-total">
+                        <p>Total Amount: <strong id="modal-total"></strong></p>
+                    </div>
+                </div>
+                <div class="modal-buttons">
+                    <button class="btn btn-primary" id="confirm-order-btn">Confirm Order</button>
+                    <button class="btn btn-secondary" id="cancel-order-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Order Success -->
+        <div class="modal" id="success-modal">
+            <div class="modal-content success">
+                <h2>✓ Order Placed Successfully</h2>
+                <p>Your order has been sent to the kitchen.</p>
+                <p>Order ID: <strong id="order-id"></strong></p>
+                <button class="btn btn-primary" id="close-success-btn">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
